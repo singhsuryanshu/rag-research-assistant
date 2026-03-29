@@ -6,6 +6,7 @@ langchain-community==0.3.7
 
 # Vector DB
 chromadb==0.5.18
+posthog==2.4.2
 
 # Document parsing
 pymupdf==1.24.12
