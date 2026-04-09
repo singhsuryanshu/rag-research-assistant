@@ -1,3 +1,4 @@
+import os
 import sys
 sys.path.insert(0, ".")
 
@@ -13,7 +14,13 @@ st.set_page_config(
     layout="wide",
 )
 
-API_BASE = "http://localhost:8000/api"
+# Backend API (local default). Override for Streamlit Cloud:
+# - App Settings → Secrets: API_BASE = "https://your-backend.example.com/api"
+# - or env: API_BASE=https://your-backend.example.com/api
+_default_api = "http://127.0.0.1:8000/api"
+API_BASE = (os.environ.get("API_BASE") or st.secrets.get("API_BASE", _default_api)).rstrip(
+    "/"
+)
 
 # ── Session state initialization ────────────────────────────────────
 # st.session_state persists across reruns within the same browser session

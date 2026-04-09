@@ -39,3 +39,22 @@ In a second terminal:
 ```bash
 streamlit run ui/streamlit_app.py
 ```
+
+## Streamlit Cloud → remote API
+
+The UI calls the FastAPI backend via `API_BASE` (must include the `/api` path prefix, e.g. `https://your-server.com/api`).
+
+**Streamlit Community Cloud:** App **Settings → Secrets** → add:
+
+```toml
+API_BASE = "https://your-deployed-backend.example.com/api"
+```
+
+**Local override:** set environment variable before `streamlit run`:
+
+```bash
+export API_BASE="https://your-deployed-backend.example.com/api"
+streamlit run ui/streamlit_app.py
+```
+
+If your backend blocks browser requests, enable CORS for your Streamlit app’s origin on the FastAPI side.
