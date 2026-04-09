@@ -1,0 +1,10 @@
+# Environment
+.env
+venv/
+__pycache__/
+*.pyc
+*.pyo
+
+# Data (don't commit PDFs or the vector DB)
+data/documents/
+data/chroma_db/
